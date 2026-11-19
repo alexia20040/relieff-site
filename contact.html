@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Relieff | Începe un proiect</title>
+<meta name="description" content="Scrie-ne despre spațiul tău. Relieff — rocă artificială, pereți decorativi și basoreliefuri sculptate manual.">
+<meta name="theme-color" content="#141312">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main" style="position:absolute;left:-9999px;top:0;background:#141312;color:#F2EDE4;padding:12px 20px;z-index:10000;font-size:.8rem;letter-spacing:.1em" onfocus="this.style.left='0'" onblur="this.style.left='-9999px'">Sari la conținut</a>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="wordmark" aria-label="Relieff — pagina principală">RELIE<span class="ff">FF</span></a>
+    <nav aria-label="Navigare principală">
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html">Acasă</a></li>
+        <li><a href="despre.html">Despre</a></li>
+        <li><a href="servicii.html">Servicii</a></li>
+        <li><a href="proces.html">Proces</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="contact.html" class="nav__cta">Începe un proiect</a>
+    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Deschide meniul">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="pagehead">
+    <div class="wrap pagehead__inner">
+      <span class="label label--light">Contact</span>
+      <h1>Spune-ne despre <em>spațiul tău</em>.</h1>
+      <p>Două fraze sunt de ajuns ca să începem. Nu îți trimitem un catalog — îți răspundem cu o direcție.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="contact-grid">
+
+        <!-- ============ FORMULAR ============ -->
+        <div class="reveal">
+          <span class="label">Formular de contact</span>
+          <h2 style="margin-bottom:14px">Ce ai în lucru?</h2>
+          <p style="color:var(--ink-soft);margin-bottom:32px">Cu cât ne spui mai concret despre spațiu — tip de proiect, dimensiune aproximativă, stadiu — cu atât răspunsul nostru e mai util.</p>
+
+          <form class="form" id="contactForm" novalidate>
+            <div class="field">
+              <label for="nume">Nume</label>
+              <input type="text" id="nume" name="nume" autocomplete="name" placeholder="Numele tău" required>
+            </div>
+
+            <div class="field">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" autocomplete="email" placeholder="adresa@exemplu.ro" required>
+            </div>
+
+            <div class="field">
+              <label for="tip">Tip de proiect</label>
+              <select id="tip" name="tip">
+                <option value="">Alege…</option>
+                <option>Pereți decorativi</option>
+                <option>Basorelief</option>
+                <option>Obiecte unicat</option>
+                <option>Nu sunt sigur încă</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="mesaj">Despre proiect</label>
+              <textarea id="mesaj" name="mesaj" placeholder="Ex: perete de 4 m în living, lumină puternică după-amiaza, finisaj mat…" required></textarea>
+            </div>
+
+            <div>
+              <button type="submit" class="btn btn--dark">Trimite mesajul <span class="arrow" aria-hidden="true">→</span></button>
+            </div>
+
+            <p class="form__note" id="formStatus" hidden tabindex="-1" style="border-left:2px solid var(--copper);background:rgba(184,115,51,.08);padding:14px 18px;color:var(--ink)">
+              <strong>Formularul nu trimite încă mesaje.</strong> Pagina e publicată, dar nu are încă un serviciu de e-mail conectat. Completează adresa de e-mail reală în secțiunea de contact alăturată și scrie-ne direct — sau conectează formularul la un serviciu (Formspree, Netlify Forms) și îl activăm.
+            </p>
+
+            <p class="form__note">
+              <strong>Notă:</strong> acest formular este pregătit vizual, dar nu are încă un serviciu de trimitere conectat. Nu afișăm „mesaj trimis” dacă mesajul nu pleacă nicăieri.
+            </p>
+          </form>
+        </div>
+
+        <!-- ============ DATE DE CONTACT ============ -->
+        <div class="reveal">
+          <div class="contact-card">
+            <h3>Date de contact</h3>
+            <ul class="contact-list">
+              <li>
+                <span class="k">E-mail</span>
+                <span class="v"><span class="todo">adresa de e-mail</span></span>
+              </li>
+              <li>
+                <span class="k">Telefon</span>
+                <span class="v"><span class="todo">numărul de telefon</span></span>
+              </li>
+              <li>
+                <span class="k">Atelier</span>
+                <span class="v"><span class="todo">adresa atelierului</span></span>
+              </li>
+              <li>
+                <span class="k">Program</span>
+                <span class="v"><span class="todo">zilele și orele</span></span>
+              </li>
+              <li>
+                <span class="k">Social</span>
+                <span class="v"><span class="todo">Instagram / LinkedIn</span></span>
+              </li>
+            </ul>
+
+            <div class="note-box" style="margin-top:24px">
+              <strong>De ce sunt marcate așa:</strong> nu inventăm adrese, telefoane sau conturi care nu există. Fiecare rând marcat cu portocaliu se completează o singură dată, cu datele reale, și dispare.
+            </div>
+          </div>
+
+          <div style="margin-top:28px;border:1px solid var(--line);padding:clamp(22px,2.6vw,30px)">
+            <h3 style="font-family:var(--sans);font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-mute);font-weight:400;margin-bottom:14px">Ce se întâmplă după ce scrii</h3>
+            <ol style="list-style:none;padding:0;margin:0;counter-reset:c">
+              <li style="counter-increment:c;position:relative;padding-left:34px;margin-bottom:12px;font-size:.92rem;color:var(--ink-soft);line-height:1.65">
+                <span style="position:absolute;left:0;top:0;font-family:var(--serif);color:var(--copper);font-size:1.05rem">1</span>
+                Citim mesajul și ne uităm la ce ai descris.
+              </li>
+              <li style="counter-increment:c;position:relative;padding-left:34px;margin-bottom:12px;font-size:.92rem;color:var(--ink-soft);line-height:1.65">
+                <span style="position:absolute;left:0;top:0;font-family:var(--serif);color:var(--copper);font-size:1.05rem">2</span>
+                Îți răspundem cu o primă direcție — nu cu o ofertă standard.
+              </li>
+              <li style="counter-increment:c;position:relative;padding-left:34px;margin-bottom:0;font-size:.92rem;color:var(--ink-soft);line-height:1.65">
+                <span style="position:absolute;left:0;top:0;font-family:var(--serif);color:var(--copper);font-size:1.05rem">3</span>
+                Dacă se potrivește, stabilim o discuție despre spațiu și mostre.
+              </li>
+            </ol>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap cta__inner">
+      <h2 class="reveal">Piatra își amintește <em>mâna</em>.</h2>
+      <div class="cta__side reveal">
+        <p>Dacă ai ajuns până aici, probabil ai un spațiu în minte. Spune-ne despre el.</p>
+        <a href="servicii.html" class="btn btn--ghost">Vezi serviciile <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <a href="index.html" class="wordmark">RELIE<span class="ff">FF</span></a>
+        <p class="footer__tag">Piatra își amintește mâna.</p>
+      </div>
+      <div>
+        <h4>Navigare</h4>
+        <ul>
+          <li><a href="index.html">Acasă</a></li>
+          <li><a href="despre.html">Despre</a></li>
+          <li><a href="servicii.html">Servicii</a></li>
+          <li><a href="proces.html">Proces</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Servicii</h4>
+        <ul>
+          <li><a href="servicii.html#pereti">Pereți decorativi</a></li>
+          <li><a href="servicii.html#basorelief">Basorelief</a></li>
+          <li><a href="servicii.html#obiecte">Obiecte unicat</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="contact.html">Formular de contact</a></li>
+          <li><span class="todo">e-mail</span></li>
+          <li><span class="todo">telefon</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="year">2026</span> Relieff. Arhitectură în piatră.</span>
+      <span>Rocă artificială · Basorelief · Obiecte unicat</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>

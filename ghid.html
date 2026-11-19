@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ghid — Cum pun site-ul Relieff live pe Vercel</title>
+<meta name="description" content="Ghid pas cu pas: ce fișier încarci, în ce repository, în ce folder, și ce faci în Vercel ca site-ul Relieff să fie live la o adresă .vercel.app.">
+<meta name="theme-color" content="#141312">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main" style="position:absolute;left:-9999px;top:0;background:#141312;color:#F2EDE4;padding:12px 20px;z-index:10000;font-size:.8rem;letter-spacing:.1em" onfocus="this.style.left='0'" onblur="this.style.left='-9999px'">Sari la conținut</a>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="wordmark" aria-label="Relieff — pagina principală">RELIE<span class="ff">FF</span></a>
+    <nav aria-label="Navigare principală">
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html">Acasă</a></li>
+        <li><a href="despre.html">Despre</a></li>
+        <li><a href="servicii.html">Servicii</a></li>
+        <li><a href="proces.html">Proces</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="index.html" class="nav__cta">Vezi site-ul</a>
+    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Deschide meniul">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="pagehead">
+    <div class="wrap pagehead__inner">
+      <span class="label label--light">Ghid de publicare</span>
+      <h1>Ce încarci, unde, și ce faci în <em>Vercel</em>.</h1>
+      <p>Ai deja cont pe GitHub și pe Vercel. Deci nu vorbim despre conturi. Vorbim exact despre fișiere, folder și butoane.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="guide">
+
+        <!-- ============ RĂSPUNSUL SCURT ============ -->
+        <div style="background:var(--charcoal);color:var(--ivory);padding:clamp(26px,3.4vw,40px);margin-bottom:clamp(40px,5vw,60px)">
+          <span class="label label--light" style="margin-bottom:20px">Răspunsul scurt</span>
+          <table style="width:100%;border-collapse:collapse;font-size:.95rem">
+            <tbody>
+              <tr>
+                <td style="padding:12px 18px 12px 0;border-bottom:1px solid rgba(242,237,228,.16);color:rgba(242,237,228,.55);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;white-space:nowrap;vertical-align:top">Ce fișier încarc</td>
+                <td style="padding:12px 0;border-bottom:1px solid rgba(242,237,228,.16);color:var(--ivory)"><code style="background:rgba(242,237,228,.12);color:var(--ivory)">index.html</code> — plus celelalte 6, toate în același loc</td>
+              </tr>
+              <tr>
+                <td style="padding:12px 18px 12px 0;border-bottom:1px solid rgba(242,237,228,.16);color:rgba(242,237,228,.55);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;white-space:nowrap;vertical-align:top">În ce repository</td>
+                <td style="padding:12px 0;border-bottom:1px solid rgba(242,237,228,.16);color:var(--ivory)">Unul nou, numit <code style="background:rgba(242,237,228,.12);color:var(--ivory)">relieff-site</code></td>
+              </tr>
+              <tr>
+                <td style="padding:12px 18px 12px 0;border-bottom:1px solid rgba(242,237,228,.16);color:rgba(242,237,228,.55);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;white-space:nowrap;vertical-align:top">În ce folder</td>
+                <td style="padding:12px 0;border-bottom:1px solid rgba(242,237,228,.16);color:var(--ivory)">În rădăcină. Nu într-un subfolder.</td>
+              </tr>
+              <tr>
+                <td style="padding:12px 18px 12px 0;color:rgba(242,237,228,.55);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;white-space:nowrap;vertical-align:top">Ce link pun în Vercel</td>
+                <td style="padding:12px 0;color:var(--copper-soft)"><strong style="color:var(--copper-soft)">Niciunul.</strong> Alegi repository-ul din listă.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="color:rgba(242,237,228,.6);font-size:.88rem;margin:20px 0 0">Asta e miezul: Vercel nu primește un link. Îl autorizezi o dată pe contul tău GitHub și îți arată repository-urile ca o listă din care apeși Import.</p>
+        </div>
+
+        <!-- ============ 1 ============ -->
+        <h2>1. Ce fișiere ai</h2>
+        <p>Pachetul conține 7 fișiere. Toate stau unul lângă altul, în același folder. Nu există subfoldere obligatorii, cu o singură excepție: <code>images/</code>.</p>
+
+        <div class="tree">
+relieff-site/<br>
+├── <span class="ok">index.html</span>        <span class="dim">← pagina Acasă (intrarea în site)</span><br>
+├── <span class="ok">despre.html</span>        <span class="dim">← pagina Despre</span><br>
+├── <span class="ok">servicii.html</span>      <span class="dim">← pagina Servicii</span><br>
+├── <span class="ok">proces.html</span>        <span class="dim">← pagina Proces</span><br>
+├── <span class="ok">contact.html</span>       <span class="dim">← pagina Contact</span><br>
+├── <span class="ok">ghid.html</span>          <span class="dim">← acest ghid</span><br>
+├── <span class="ok">styles.css</span>         <span class="dim">← toate stilurile, un singur fișier</span><br>
+├── <span class="ok">script.js</span>          <span class="dim">← meniu mobil + animații</span><br>
+├── <span class="ok">vercel.json</span>        <span class="dim">← spune lui Vercel că e site static</span><br>
+├── <span class="ok">.gitignore</span>         <span class="dim">← ține afară fișierele de sistem</span><br>
+├── <span class="ok">README.md</span>          <span class="dim">← notă pentru tine, nu se vede pe site</span><br>
+└── <span class="ok">images/</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;└── <span class="ok">moodboard.png</span>  <span class="dim">← imaginea de fundal</span>
+        </div>
+
+        <p><strong>De ce sunt doar fișiere simple:</strong> site-ul e static. Nu are bază de date, nu are server, nu are build. Browserul deschide <code>index.html</code> și atât. Asta înseamnă zero instalări, zero comenzi în terminal, zero configurări complicate — și un site care se încarcă foarte repede.</p>
+
+        <div class="see">
+          În folderul dezarhivat vezi 7 fișiere text/HTML plus un folder <code>images</code> cu o singură imagine. Dacă vezi un folder în plus numit <code>relieff-site</code> care conține totul, e la fel de bine — dar atunci când urci, urci <em>conținutul</em> lui, nu folderul.
+        </div>
+
+        <!-- ============ 2 ============ -->
+        <h2>2. În ce repository</h2>
+        <p>Un repository nou, doar pentru site. Nu îl amesteci cu alte proiecte — altfel Vercel va încerca să publice și altceva.</p>
+
+        <ol>
+          <li>Intră pe <code>github.com</code> și autentifică-te.</li>
+          <li>Sus în dreapta, apasă butonul <span class="btn-name">+</span> și alege <span class="btn-name">New repository</span>.</li>
+          <li>La <strong>Repository name</strong> scrie exact: <code>relieff-site</code></li>
+          <li>Lasă <strong>Public</strong> bifat. (Private funcționează și el cu Vercel, dar Public e mai simplu la început.)</li>
+          <li>Bifează <strong>Add a README file</strong>. Contează: fără el, repository-ul e gol și GitHub nu îți arată butonul de upload.</li>
+          <li>Apasă <span class="btn-name">Create repository</span>.</li>
+        </ol>
+
+        <div class="see">
+          Se deschide pagina repository-ului. Sus vezi numele <code>relieff-site</code> și eticheta <em>Public</em>. În mijloc vezi un singur fișier: <code>README.md</code>. În dreapta sus există un buton verde <span class="btn-name">Code</span>.
+        </div>
+
+        <!-- ============ 3 ============ -->
+        <h2>3. În ce folder — și cum urci</h2>
+        <p><strong>În rădăcină.</strong> Când deschizi repository-ul, ești deja în rădăcină. Nu intra în niciun folder, nu crea unul. Fișierele stau la același nivel cu <code>README.md</code>.</p>
+
+        <h3>Urcarea, pas cu pas</h3>
+        <ol>
+          <li>În pagina repository-ului, apasă <span class="btn-name">Add file</span> (buton lângă <em>Code</em>).</li>
+          <li>Alege <span class="btn-name">Upload files</span>.</li>
+          <li>Trage în fereastră toate fișierele: <code>index.html</code>, <code>despre.html</code>, <code>servicii.html</code>, <code>proces.html</code>, <code>contact.html</code>, <code>ghid.html</code>, <code>styles.css</code>, <code>script.js</code>, <code>vercel.json</code>, <code>README.md</code>.</li>
+          <li>Trage și folderul <code>images</code> — GitHub îl păstrează ca folder.</li>
+          <li>Jos, în câmpul de commit, scrie: <code>Site Relieff — versiunea inițială</code></li>
+          <li>Apasă <span class="btn-name">Commit changes</span>.</li>
+        </ol>
+
+        <div class="see">
+          Te întoarce la pagina repository-ului și vezi toate fișierele listate, plus folderul <code>images</code>. Dacă un fișier lipsește, îl poți urca separat cu același buton <span class="btn-name">Add file</span> → <span class="btn-name">Upload files</span>.
+        </div>
+
+        <h3>Fișierul <code>.gitignore</code> — cazul special</h3>
+        <p>Fișierele care încep cu punct sunt ascunse de sistemul de operare. Pe Windows, în Explorer: <em>View</em> → bifează <em>Hidden items</em>. Pe Mac, în Finder: <code>Cmd + Shift + .</code> (punct).</p>
+        <p>Dacă tot nu îl vezi, creează-l direct pe GitHub — metoda care merge întotdeauna:</p>
+        <ol>
+          <li><span class="btn-name">Add file</span> → <span class="btn-name">Create new file</span></li>
+          <li>La nume scrie exact: <code>.gitignore</code> (cu punct în față)</li>
+          <li>În conținut scrie: <code>.DS_Store</code> apoi enter, apoi <code>Thumbs.db</code></li>
+          <li><span class="btn-name">Commit changes</span></li>
+        </ol>
+        <p style="font-size:.9rem;color:var(--ink-mute)">Sincer: <code>.gitignore</code> nu e obligatoriu pentru ca site-ul să funcționeze. Dacă te blochează, sari peste el — nu afectează publicarea.</p>
+
+        <h3>Cum verifici că au ajuns toate</h3>
+        <p>Pe pagina repository-ului trebuie să vezi <strong>11 intrări</strong>: 6 fișiere HTML, <code>styles.css</code>, <code>script.js</code>, <code>vercel.json</code>, <code>README.md</code>, <code>.gitignore</code> — plus folderul <code>images</code>. Click pe <code>images</code> și verifică să fie <code>moodboard.png</code> înăuntru.</p>
+
+        <!-- ============ 4 ============ -->
+        <h2>4. Ce faci în Vercel</h2>
+        <p>Nimic din ce ai putea numi „link”. Patru click-uri și un buton de deploy.</p>
+
+        <ol>
+          <li>Intră pe <code>vercel.com</code> și autentifică-te.</li>
+          <li>Apasă <span class="btn-name">Add New…</span> (dreapta sus) → <span class="btn-name">Project</span>.</li>
+          <li>În secțiunea <strong>Import Git Repository</strong> ar trebui să vezi deja <code>relieff-site</code> în listă. Apasă <span class="btn-name">Import</span> lângă el.</li>
+          <li>Dacă lista e goală: apasă <span class="btn-name">Adjust GitHub App Permissions</span> → în fereastra GitHub care se deschide, dă acces la repository-ul <code>relieff-site</code> → <span class="btn-name">Install</span> → revino în Vercel și reîncarcă pagina.</li>
+          <li>La <strong>Framework Preset</strong> alege <span class="btn-name">Other</span>. (Nu Next.js, nu Vite — e site static.)</li>
+          <li><strong>Root Directory</strong> lasă gol. <strong>Build Command</strong> lasă gol. <strong>Output Directory</strong> lasă gol.</li>
+          <li>Apasă <span class="btn-name">Deploy</span>.</li>
+        </ol>
+
+        <div class="see">
+          Vezi un ecran cu un build care rulează câteva secunde — un cerc care se învârte și log-uri care defilează. Apoi apare o bifă verde și un ecran de felicitare cu confetti, textul <em>Congratulations!</em> și un buton <span class="btn-name">Visit</span>. Apasă-l: se deschide site-ul tău, live.
+        </div>
+
+        <p style="font-size:.9rem;color:var(--ink-mute)">Dacă build-ul durează mai mult de un minut la un site static, ceva nu e în regulă — vezi secțiunea 7.</p>
+
+        <!-- ============ 5 ============ -->
+        <h2>5. Cum arată linkul final</h2>
+        <p>Vercel îți dă automat o adresă construită din numele proiectului:</p>
+        <div class="tree" style="font-size:.95rem">
+<span class="ok">https://relieff-site.vercel.app</span>
+        </div>
+        <p>Asta e adresa pe care o trimiți mai departe. Funcționează imediat, fără configurare.</p>
+
+        <h3>Dacă vrei alt nume</h3>
+        <ol>
+          <li>În proiectul din Vercel, mergi la <span class="btn-name">Settings</span> → <span class="btn-name">General</span>.</li>
+          <li>La <strong>Project Name</strong> scrie numele dorit, de exemplu <code>relieff</code>.</li>
+          <li>Apasă <span class="btn-name">Save</span>.</li>
+        </ol>
+        <p>Noul link devine <code>https://relieff.vercel.app</code>. Vechiul link continuă să funcționeze o perioadă, apoi se retrage — folosește-l pe cel nou de acum înainte.</p>
+
+        <div class="see">
+          În <em>Settings → General</em> vezi câmpul <strong>Project Name</strong> cu numele actual. După salvare, în tabul <em>Domains</em> apare noul domeniu <code>….vercel.app</code> marcat ca <em>Valid Configuration</em>.
+        </div>
+
+        <p style="font-size:.9rem;color:var(--ink-mute)">Un domeniu propriu (de tip <code>relieff.ro</code>) se adaugă tot din <em>Settings → Domains</em>, dar cere cumpărarea domeniului și câteva înregistrări DNS. Nu e necesar ca să pornești.</p>
+
+        <!-- ============ 6 ============ -->
+        <h2>6. Cum faci o modificare mai târziu</h2>
+        <p>Nu editezi nimic în Vercel. Editezi în GitHub, iar Vercel preia automat.</p>
+
+        <ol>
+          <li>Deschide repository-ul pe GitHub și intră în fișierul pe care vrei să îl schimbi (de exemplu <code>index.html</code>).</li>
+          <li>Apasă creionul din dreapta sus — <span class="btn-name">Edit this file</span>.</li>
+          <li>Modifică textul direct în browser.</li>
+          <li>Apasă <span class="btn-name">Commit changes…</span> → în fereastra care apare, apasă din nou <span class="btn-name">Commit changes</span>.</li>
+          <li>Așteaptă ~30 de secunde, apoi dă refresh pe site.</li>
+        </ol>
+
+        <div class="see">
+          În Vercel, la tabul <em>Deployments</em>, apare imediat o intrare nouă cu status <em>Building</em>, apoi <em>Ready</em>. Pe site, modificarea e vizibilă după refresh. Dacă nu se vede, forțează reîncărcarea cu <code>Ctrl + Shift + R</code> (Windows) sau <code>Cmd + Shift + R</code> (Mac).
+        </div>
+
+        <h3>De ce se întâmplă automat</h3>
+        <p>Când ai importat repository-ul, Vercel a instalat o aplicație GitHub care ascultă după modificări pe acel repository. Fiecare commit — adică fiecare salvare de modificare — declanșează o republicare. Nu trebuie să apeși nimic în Vercel. Nu există „buton de upload” și nici „buton de sync”.</p>
+        <p>Dacă vrei să revii la o versiune anterioară: în Vercel, tabul <em>Deployments</em>, găsește publicarea bună, apasă cele trei puncte → <span class="btn-name">Promote to Production</span>.</p>
+
+        <!-- ============ 7 ============ -->
+        <h2>7. Dacă ceva nu merge</h2>
+
+        <h3>Repository-ul nu apare în lista din Vercel</h3>
+        <p><strong>Cauză:</strong> aplicația Vercel nu are permisiune pe acel repository — se întâmplă des când ai mai multe conturi sau organizații pe GitHub.</p>
+        <p><strong>Soluție:</strong> în pasul de import, apasă <span class="btn-name">Adjust GitHub App Permissions</span>. În fereastra GitHub, la <em>Repository access</em> alege <em>Only select repositories</em> și bifează <code>relieff-site</code>. Apasă <span class="btn-name">Install</span> (sau <em>Save</em>), apoi reîncarcă pagina din Vercel.</p>
+
+        <h3>Pagina apare fără stiluri — doar text negru pe fundal alb</h3>
+        <p><strong>Cauză:</strong> <code>styles.css</code> nu a ajuns în repository, sau a ajuns într-un subfolder.</p>
+        <p><strong>Soluție:</strong> verifică pe GitHub că <code>styles.css</code> e la același nivel cu <code>index.html</code>. Dacă e într-un folder, mută-l: deschide fișierul → creion → schimbă numele în <code>styles.css</code> fără cale → commit. Apoi redeploy.</p>
+
+        <h3>Eroare 404 pe toate paginile</h3>
+        <p><strong>Cauză:</strong> fișierele au ajuns într-un subfolder, iar Vercel caută <code>index.html</code> în rădăcină.</p>
+        <p><strong>Soluție:</strong> în Vercel, <em>Settings → General → Root Directory</em>. Dacă acolo scrie un nume de folder, șterge-l și lasă gol. Salvează și redeploy din <em>Deployments</em> → <em>Redeploy</em>.</p>
+
+        <h3>Build failed</h3>
+        <p><strong>Cauză:</strong> aproape întotdeauna un <em>Framework Preset</em> greșit — Vercel încearcă să ruleze un build de Next.js pe un site static.</p>
+        <p><strong>Soluție:</strong> <em>Settings → General → Framework Preset</em> → alege <span class="btn-name">Other</span>. Golește <em>Build Command</em> și <em>Output Directory</em>. Apoi <em>Deployments</em> → <em>Redeploy</em>.</p>
+
+        <h3>Modificarea nu se vede pe site</h3>
+        <p><strong>Cauză:</strong> cache de browser, sau commit-ul nu s-a salvat.</p>
+        <p><strong>Soluție:</strong> verifică în Vercel la <em>Deployments</em> că ultima intrare e <em>Ready</em> și are ora modificării tale. Dacă da, forțează reîncărcarea: <code>Ctrl + Shift + R</code> / <code>Cmd + Shift + R</code>. Dacă nu, refă commit-ul.</p>
+
+        <h3>Imaginile nu se încarcă</h3>
+        <p><strong>Cauză:</strong> folderul <code>images</code> lipsește sau are alt nume (de exemplu <code>Images</code> cu majusculă — GitHub și Vercel fac diferență între litere mari și mici).</p>
+        <p><strong>Soluție:</strong> verifică numele exact: <code>images</code>, cu literă mică, iar înăuntru <code>moodboard.png</code>. Calea din HTML e <code>images/moodboard.png</code>.</p>
+
+        <!-- ============ 8 ============ -->
+        <h2>8. Tabelul final</h2>
+        <p>Toate link-urile și butoanele, într-un singur loc.</p>
+
+        <div style="overflow-x:auto">
+          <table class="gtable">
+            <thead>
+              <tr>
+                <th scope="col">Ce vrei să faci</th>
+                <th scope="col">Unde mergi</th>
+                <th scope="col">Ce apeși</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Creezi repository-ul</td>
+                <td><code>github.com</code></td>
+                <td><span class="btn-name">+</span> → <span class="btn-name">New repository</span></td>
+              </tr>
+              <tr>
+                <td>Urci fișierele</td>
+                <td>Pagina repository-ului</td>
+                <td><span class="btn-name">Add file</span> → <span class="btn-name">Upload files</span></td>
+              </tr>
+              <tr>
+                <td>Salvezi urcarea</td>
+                <td>Jos, în pagină</td>
+                <td><span class="btn-name">Commit changes</span></td>
+              </tr>
+              <tr>
+                <td>Creezi <code>.gitignore</code></td>
+                <td>Pagina repository-ului</td>
+                <td><span class="btn-name">Add file</span> → <span class="btn-name">Create new file</span></td>
+              </tr>
+              <tr>
+                <td>Publici site-ul</td>
+                <td><code>vercel.com</code></td>
+                <td><span class="btn-name">Add New…</span> → <span class="btn-name">Project</span> → <span class="btn-name">Import</span></td>
+              </tr>
+              <tr>
+                <td>Alegi tipul de proiect</td>
+                <td>Ecranul de configurare</td>
+                <td><em>Framework Preset</em> → <span class="btn-name">Other</span></td>
+              </tr>
+              <tr>
+                <td>Pornești publicarea</td>
+                <td>Ecranul de configurare</td>
+                <td><span class="btn-name">Deploy</span></td>
+              </tr>
+              <tr>
+                <td>Deschizi site-ul</td>
+                <td>Ecranul de felicitare</td>
+                <td><span class="btn-name">Visit</span></td>
+              </tr>
+              <tr>
+                <td>Schimbi numele linkului</td>
+                <td>Vercel → proiect</td>
+                <td><span class="btn-name">Settings</span> → <span class="btn-name">General</span> → <em>Project Name</em></td>
+              </tr>
+              <tr>
+                <td>Modifici un text</td>
+                <td>GitHub → fișierul</td>
+                <td>creionul → <span class="btn-name">Commit changes</span></td>
+              </tr>
+              <tr>
+                <td>Vezi dacă publicarea a reușit</td>
+                <td>Vercel → proiect</td>
+                <td><span class="btn-name">Deployments</span></td>
+              </tr>
+              <tr>
+                <td>Revii la o versiune veche</td>
+                <td>Vercel → <em>Deployments</em></td>
+                <td>trei puncte → <span class="btn-name">Promote to Production</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note-box">
+          <strong>Ordinea care contează:</strong> GitHub întâi, Vercel al doilea. Vercel nu poate publica un repository care nu există încă. Dacă încerci invers, lista de import va fi goală și vei crede că ceva e stricat.
+        </div>
+
+        <div style="margin-top:clamp(40px,5vw,60px);padding-top:clamp(28px,3.4vw,40px);border-top:1px solid var(--line)">
+          <p style="font-size:.9rem;color:var(--ink-mute)">Acest ghid descrie interfețele GitHub și Vercel așa cum arată ele acum. Dacă o etichetă de buton se schimbă într-o actualizare, structura pașilor rămâne aceeași — caută butonul cu sensul echivalent.</p>
+          <a href="index.html" class="btn btn--line" style="margin-top:20px">Înapoi la site <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <a href="index.html" class="wordmark">RELIE<span class="ff">FF</span></a>
+        <p class="footer__tag">Piatra își amintește mâna.</p>
+      </div>
+      <div>
+        <h4>Navigare</h4>
+        <ul>
+          <li><a href="index.html">Acasă</a></li>
+          <li><a href="despre.html">Despre</a></li>
+          <li><a href="servicii.html">Servicii</a></li>
+          <li><a href="proces.html">Proces</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Servicii</h4>
+        <ul>
+          <li><a href="servicii.html#pereti">Pereți decorativi</a></li>
+          <li><a href="servicii.html#basorelief">Basorelief</a></li>
+          <li><a href="servicii.html#obiecte">Obiecte unicat</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="contact.html">Formular de contact</a></li>
+          <li><span class="todo">e-mail</span></li>
+          <li><span class="todo">telefon</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="year">2026</span> Relieff. Arhitectură în piatră.</span>
+      <span>Rocă artificială · Basorelief · Obiecte unicat</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>
